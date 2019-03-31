@@ -36,18 +36,6 @@
             }).join('');
         })
          .then(() => {
-        //     for (let index = 0; index <= x; index++) {
-        //     var y = document.querySelector(`.a${index}`);
-        //     y.addEventListener('click', () => {
-        //         send = array[index]._id;
-        //         sendString = JSON.stringify(send);
-        //         for (let index = 0; index < array.length; index++) {
-        //             document.querySelector(`.a${index}`).style.transitionDuration = "0.3s";
-        //             document.querySelector(`.a${index}`).style.backgroundColor = "transparent";
-        //         }
-        //         document.querySelector(`.a${index}`).style.backgroundColor = "blue";
-        //         });
-        //     }
         var ctx = document.getElementById('myChart').getContext('2d');
                 var chart = new Chart(ctx, {
                     // The type of chart we want to create
@@ -55,7 +43,7 @@
 
                     // The data for our dataset
                     data: {
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        labels: getTime(),
                         datasets: [{
                             label: 'My First dataset',
                             backgroundColor: 'rgb(255, 99, 132)',
@@ -68,6 +56,27 @@
             });
         })
         .catch(err => { throw err });
+        function getTime(){
+            for (let index = 0; index < array.length; index++) {
+                return array[index];
+            }
+        }
+
+        
+        //     for (let index = 0; index <= x; index++) {
+        //     var y = document.querySelector(`.a${index}`);
+        //     y.addEventListener('click', () => {
+        //         send = array[index]._id;
+        //         sendString = JSON.stringify(send);
+        //         for (let index = 0; index < array.length; index++) {
+        //             document.querySelector(`.a${index}`).style.transitionDuration = "0.3s";
+        //             document.querySelector(`.a${index}`).style.backgroundColor = "transparent";
+        //         }
+        //         document.querySelector(`.a${index}`).style.backgroundColor = "blue";
+        //         });
+        //     }
+
+        
         // function sendIt(){
         //         var form = document.createElement('form');
         //         document.body.appendChild(form);
@@ -78,3 +87,5 @@
         // }
 </script>
 </html>
+
+
