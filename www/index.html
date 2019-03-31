@@ -32,28 +32,11 @@
             let dataFeed = data.map((quote) => { 
                 x++;
                 array.push(quote);
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var chart = new Chart(ctx, {
-                    // The type of chart we want to create
-                    type: 'line',
-
-                    // The data for our dataset
-                    data: {
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                        datasets: [{
-                            label: 'My First dataset',
-                            backgroundColor: 'rgb(255, 99, 132)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: quote.count
-                        }]
-                    },
-    // Configuration options go here
-    options: {}
-});
+                
             }).join('');
             quoteList.innerHTML = dataFeed;
         })
-        // .then(() => {
+         .then(() => {
         //     for (let index = 0; index <= x; index++) {
         //     var y = document.querySelector(`.a${index}`);
         //     y.addEventListener('click', () => {
@@ -66,7 +49,25 @@
         //         document.querySelector(`.a${index}`).style.backgroundColor = "blue";
         //         });
         //     }
-        // })
+        var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        datasets: [{
+                            label: 'My First dataset',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: array.count
+                        }]
+                    },
+                // Configuration options go here
+                options: {}
+            });
+        })
         .catch(err => { throw err });
         // function sendIt(){
         //         var form = document.createElement('form');
