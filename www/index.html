@@ -15,25 +15,7 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-12">
-                <h1>Favourite Movie Quotes</h1>
-                <form action="/addQuotes" method="post">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Film Name" name="filmName">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Character Name" name="characterName">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Quote" name="quote">
-                    </div>
-                    <div class="input-group">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                    </div>
-                </form>
-                <!--<button  onclick='sendIt()' class="btn btn-primary float-right" type="submit" value="Delete"> Delete </button>-->
-                <hr>
-                <h1>My Saved Quotes</h1>
-                <div class="quoteList row"></div>
+                <canvas id="myChart"></canvas>
             </div>
         </div>
     </div>
@@ -50,18 +32,24 @@
             let dataFeed = data.map((quote) => { 
                 x++;
                 array.push(quote);
-                return `<div class="col-6 a${x} del">
-                            <div class="card card-body mb-3 mt-3">
-                                <h1>Film Name: ${quote.count}</h1>
-                                <h4>Character Name: ${quote.date}</h4>
-                                <form method="post" action='/delQuotes/${quote._id}'>
-                                    <button type="submit" class="btn btn-danger btn-block mt-3">
-                                        <i class="fa fa-times fa-lg"></i> Delete Quote
-                                    </button>
-                                </form>
-                            </div>
-                        </div>`
-                        console.log(quote._id);
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        datasets: [{
+                            label: 'My First dataset',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: quote.count
+                        }]
+                    },
+    // Configuration options go here
+    options: {}
+});
             }).join('');
             quoteList.innerHTML = dataFeed;
         })
