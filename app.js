@@ -39,14 +39,6 @@ app.get("/getData", (req, res) => {
     })
 });
 
-//test
-
-
-
-
-
-
-
 // app.post("/delQuotes/:id", (req, res) => {
 //     console.log(req.params.id);
 //     var id = req.params.id;
