@@ -42,7 +42,7 @@
     var send, sendString;
     var x = -1;
     var array = [];
-    let url = "/getQuotes";
+    let url = "/getData";
     const quoteList = document.querySelector('.quoteList');  
     fetch(url)
         .then(res => res.json())
@@ -52,9 +52,8 @@
                 array.push(quote);
                 return `<div class="col-6 a${x} del">
                             <div class="card card-body mb-3 mt-3">
-                                <h1>Film Name: ${quote.filmName}</h1>
-                                <h4>Character Name: ${quote.characterName}</h4>
-                                <i>Quote: "${quote.quote}"</i>
+                                <h1>Film Name: ${quote.count}</h1>
+                                <h4>Character Name: ${quote.date}</h4>
                                 <form method="post" action='/delQuotes/${quote._id}'>
                                     <button type="submit" class="btn btn-danger btn-block mt-3">
                                         <i class="fa fa-times fa-lg"></i> Delete Quote
