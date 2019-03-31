@@ -41,12 +41,12 @@
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: [array.date],
+                    labels: [getTime()],
                     datasets: [{
                         label: 'My First dataset',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: [array.count]
+                        data: [getPoints()]
                     }]
                 },
                 // Configuration options go here
