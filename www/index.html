@@ -32,7 +32,6 @@
             let dataFeed = data.map((quote) => { 
                 x++;
                 array.push(quote);
-                
             }).join('');
         })
         .then(() => {
@@ -42,12 +41,12 @@
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: quote[1].date,
+                    labels: [array[1].date, array[2].date],
                     datasets: [{
                         label: 'My First dataset',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: quote[1].count
+                        data: [array[1].count, array[2].count]
                     }]
                 },
                 // Configuration options go here
