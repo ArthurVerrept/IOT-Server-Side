@@ -35,7 +35,7 @@ app.post("/addData", (req, res) => {
 app.get("/getData", (req, res) => {
     db.collection("sound").find().toArray((err, result) => {
         if (err) throw err;
-        res.send(result);
+        console.log(result);
     })
 });
 
