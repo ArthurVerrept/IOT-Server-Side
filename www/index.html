@@ -23,7 +23,8 @@
 <script>
     var send, sendString;
     var x = -1;
-    var array = [];
+    var dateArray = [];
+    var points = [];
     let url = "/getData";
     const quoteList = document.querySelector('.quoteList');  
     fetch(url)
@@ -31,7 +32,8 @@
         .then((data) => {
             let dataFeed = data.map((quote) => { 
                 x++;
-                array.push(quote);
+                dateArray.push(quote.date);
+                points.push(quote.count);
             }).join('');
         })
         .then(() => {
@@ -41,12 +43,12 @@
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: [getTime()],
+                    labels: [dateArray],
                     datasets: [{
                         label: 'My First dataset',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: [getPoints()]
+                        data: [points]
                     }]
                 },
                 // Configuration options go here
