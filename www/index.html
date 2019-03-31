@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+        
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <h1>Favourite Movie Quotes</h1>
+                <form action="/addQuotes" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Film Name" name="filmName">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Character Name" name="characterName">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Quote" name="quote">
+                    </div>
+                    <div class="input-group">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
+                <!--<button  onclick='sendIt()' class="btn btn-primary float-right" type="submit" value="Delete"> Delete </button>-->
+                <hr>
+                <h1>My Saved Quotes</h1>
+                <div class="quoteList row"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var send, sendString;
+    var x = -1;
+    var array = [];
+    let url = "/getQuotes";
+    const quoteList = document.querySelector('.quoteList');  
+    fetch(url)
+        .then(res => res.json())
+        .then((data) => {
+            let dataFeed = data.map((quote) => { 
+                x++;
+                array.push(quote);
+                return `<div class="col-6 a${x} del">
+                            <div class="card card-body mb-3 mt-3">
+                                <h1>Film Name: ${quote.filmName}</h1>
+                                <h4>Character Name: ${quote.characterName}</h4>
+                                <i>Quote: "${quote.quote}"</i>
+                                <form method="post" action='/delQuotes/${quote._id}'>
+                                    <button type="submit" class="btn btn-danger btn-block mt-3">
+                                        <i class="fa fa-times fa-lg"></i> Delete Quote
+                                    </button>
+                                </form>
+                            </div>
+                        </div>`
+                        console.log(quote._id);
+            }).join('');
+            quoteList.innerHTML = dataFeed;
+        })
+        // .then(() => {
+        //     for (let index = 0; index <= x; index++) {
+        //     var y = document.querySelector(`.a${index}`);
+        //     y.addEventListener('click', () => {
+        //         send = array[index]._id;
+        //         sendString = JSON.stringify(send);
+        //         for (let index = 0; index < array.length; index++) {
+        //             document.querySelector(`.a${index}`).style.transitionDuration = "0.3s";
+        //             document.querySelector(`.a${index}`).style.backgroundColor = "transparent";
+        //         }
+        //         document.querySelector(`.a${index}`).style.backgroundColor = "blue";
+        //         });
+        //     }
+        // })
+        .catch(err => { throw err });
+        // function sendIt(){
+        //         var form = document.createElement('form');
+        //         document.body.appendChild(form);
+        //         form.method = 'post';
+        //         form.action = `/delQuotes/${sendString}`;
+        //         form.submit();
+        //         console.log(sendString);
+        // }
+</script>
+</html>
