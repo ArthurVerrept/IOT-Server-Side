@@ -50,7 +50,18 @@
             let dataFeed = data.map((quote) => { 
                 x++;
                 array.push(quote);
-                        console.log(quote);
+                return `<div class="col-6 a${x} del">
+                            <div class="card card-body mb-3 mt-3">
+                                <h1>Film Name: ${quote.count}</h1>
+                                <h4>Character Name: ${quote.date}</h4>
+                                <form method="post" action='/delQuotes/${quote._id}'>
+                                    <button type="submit" class="btn btn-danger btn-block mt-3">
+                                        <i class="fa fa-times fa-lg"></i> Delete Quote
+                                    </button>
+                                </form>
+                            </div>
+                        </div>`
+                        console.log(quote._id);
             }).join('');
             quoteList.innerHTML = dataFeed;
         })
