@@ -57,7 +57,9 @@
                     //String - Animation easing effect
                     animationEasing: "easeOutBounce",
                 }
+                
             });
+            Chart.defaults.global.animation.duration = 3000;
             console.log(dateArray, points)
         })
         .catch(err => { throw err });
