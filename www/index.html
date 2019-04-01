@@ -46,6 +46,7 @@
                         label: 'sound',
                         strokeColor: "rgba(0,0,180,0.4)",
                         borderColor: 'rgba(255, 99, 132, 20)',
+                        fill: false,
                         data: points
                     }]
                 },
@@ -59,8 +60,7 @@
                 }
                 
             });
-            chart.defaults.global.elements.line.fill = false;
-            chart.defaults.global.animation.duration = 3000;
+
             console.log(dateArray, points)
         })
         .catch(err => { throw err });
