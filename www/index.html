@@ -37,6 +37,9 @@
     var sValue = 60;
     let url = "/getData";
     document.getElementById("myRange").addEventListener("click", () => {
+    minuteArray = [];
+    points = [];
+    hourArray = [];
     document.getElementById("myRange").max = 60;
     sValue = document.getElementById("myRange").value
     fetch(url)
