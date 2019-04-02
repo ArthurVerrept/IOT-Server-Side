@@ -38,9 +38,8 @@
         .then(res => res.json())
         .then((data) => {
             data.map((quote) => {
-                hourArray.push(quote.hour);
-                minuteArray.push(quote.minute);
-                points.push(quote.count); 
+
+                globalArray.push(quote)
             }).join('');
         })
         .then(() => {
@@ -72,10 +71,13 @@
         .catch(err => { throw err });
             var value = document.getElementById("myRange");
             value.addEventListener("mousemove", () => {
-                document.getElementById("myRange").max = quote.length;
-                
-                
-                console.log(document.getElementById("myRange").max)
+                document.getElementById("myRange").max = globalArray.length;
+                var sValue = document.getElementById("myRange").value
+                for (let index = 0; index < sValue; index++) {
+                    hourArray.push(quote.hour);
+                    minuteArray.push(quote.minute);
+                    points.push(quote.count); 
+                }
             })
             
             
