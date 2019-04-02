@@ -35,15 +35,23 @@
     var points = [];
     var hourArray = [];
     let url = "/getData";
+value.addEventListener("mousemove", () => {
+    document.getElementById("myRange").max = 60;
+    var sValue = document.getElementById("myRange").value
     fetch(url)
         .then(res => res.json())
         .then((data) => {
             data.map((quote) => {
-                globalArray.push(quote)
+               for (let index = 0; index < sValue; index++) {
+                    hourArray.push(quote.hour);
+                    minuteArray.push(quote.minute);
+                    points.push(quote.count); 
+                }
             }).join('');
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
+            
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -69,15 +77,12 @@
             });
         })
         .catch(err => { throw err });
+    }
             var value = document.getElementById("myRange");
             value.addEventListener("mousemove", () => {
                 document.getElementById("myRange").max = globalArray.length;
                 var sValue = document.getElementById("myRange").value
-                for (let index = 0; index < sValue; index++) {
-                    hourArray.push(quote.hour);
-                    minuteArray.push(quote.minute);
-                    points.push(quote.count); 
-                }
+                
             })
             
             
