@@ -29,8 +29,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
     var send, sendString;
-    var quote = [];
-    var globalArray = [];
     var minuteArray = [];
     var points = [];
     var hourArray = [];
@@ -41,9 +39,10 @@
     points = [];
     hourArray = [];
     document.getElementById("myRange").max = 60;
+    document.getElementById("myRange").value = 60;
     sValue = document.getElementById("myRange").value
     fetch(url)
-        .then(res => res.json())
+        .then(res => res.json().slice(0,9))
         .then((data) => {
             data.map((quote) => {
                for (let index = 0; index < sValue; index++) {
