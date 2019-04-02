@@ -30,7 +30,7 @@
         .then(res => res.json())
         .then((data) => {
             data.map((quote) => {
-                hourArray.push(quote.minute);
+                hourArray.push(quote.hour);
                 minuteArray.push(quote.minute);
                 points.push(quote.count); 
             }).join('');
@@ -60,7 +60,6 @@
                 }
                 
             });
-            console.log(dateArray, points)
         })
         .catch(err => { throw err });
 
