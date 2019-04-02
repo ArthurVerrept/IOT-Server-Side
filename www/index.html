@@ -40,6 +40,7 @@
                 hourArray.push(quote.hour);
                 minuteArray.push(quote.minute);
                 points.push(quote.count); 
+                
             }).join('');
         })
         .then(() => {
@@ -71,7 +72,8 @@
         .catch(err => { throw err });
             var value = document.getElementById("myRange");
             value.addEventListener("mousemove", () => {
-                console.log(document.getElementById("myRange").value);
+                document.getElementById("myRange").max = points.length;
+                console.log(document.getElementById("myRange").max)
             })
             
             
