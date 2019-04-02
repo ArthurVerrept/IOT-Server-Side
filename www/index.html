@@ -28,20 +28,12 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
-    
-    var send, sendString;
+    let url = "/getData";
+    document.getElementById("myRange").addEventListener("click", () => {
     var minuteArray = [];
     var points = [];
     var hourArray = [];
-    var sValue = 60;
-    let url = "/getData";
-    document.getElementById("myRange").max = 60;
-    document.getElementById("myRange").value = 60;
-    document.getElementById("myRange").addEventListener("click", () => {
-    minuteArray = [];
-    points = [];
-    hourArray = [];
-    sValue = document.getElementById("myRange").value
+    var sValue = document.getElementById("myRange").value
     fetch(url)
         .then(res => res.json())
         .then((data) => {
