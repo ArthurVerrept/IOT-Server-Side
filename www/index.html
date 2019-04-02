@@ -42,14 +42,12 @@
     document.getElementById("myRange").value = 60;
     sValue = document.getElementById("myRange").value
     fetch(url)
-        .then(res => res.json().slice(0,9))
+        .then(res => res.json())
         .then((data) => {
             data.map((quote) => {
-               for (let index = 0; index < sValue; index++) {
                     hourArray.push(quote.hour);
                     minuteArray.push(quote.minute);
                     points.push(quote.count); 
-                }
             }).join('');
         })
         .then(() => {
