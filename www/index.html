@@ -36,7 +36,7 @@
     var hourArray = [];
     var sValue = 60;
     let url = "/getData";
-value.addEventListener("mousemove", () => {
+    document.getElementById("myRange").addEventListener("mousemove", () => {
     document.getElementById("myRange").max = 60;
     sValue = document.getElementById("myRange").value
     fetch(url)
@@ -79,12 +79,12 @@ value.addEventListener("mousemove", () => {
         })
         .catch(err => { throw err });
     });
-            var value = document.getElementById("myRange");
-            value.addEventListener("mousemove", () => {
-                document.getElementById("myRange").max = globalArray.length;
-                var sValue = document.getElementById("myRange").value
+            // var value = document.getElementById("myRange");
+            // value.addEventListener("mousemove", () => {
+            //     document.getElementById("myRange").max = globalArray.length;
+            //     var sValue = document.getElementById("myRange").value
                 
-            })
+            // })
             
             
         //     for (let index = 0; index <= x; index++) {
