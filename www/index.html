@@ -44,7 +44,7 @@
     fetch(url)
         .then(res => res.json())
         .then((data) => {
-            data.slice(0,5).map((quote) => {
+            data.slice(0,value).map((quote) => {
                 hourArray.push(quote.hour);
                 minuteArray.push(quote.minute);
                 points.push(quote.count); 
