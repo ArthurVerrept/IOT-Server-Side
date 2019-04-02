@@ -25,7 +25,6 @@
     var dateArray = [];
     var points = [];
     let url = "/getData";
-    const quoteList = document.querySelector('.quoteList');
     fetch(url)
         .then(res => res.json())
         .then((data) => {
