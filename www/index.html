@@ -24,12 +24,14 @@
     var send, sendString;
     var dateArray = [];
     var points = [];
+    var hourArray = [];
     let url = "/getData";
     fetch(url)
         .then(res => res.json())
         .then((data) => {
             data.map((quote) => {
-                dateArray.push(quote.minute);
+                hourArray.push(quote.minute);
+                minuteArray.push(quote.minute);
                 points.push(quote.count); 
             }).join('');
         })
@@ -40,7 +42,7 @@
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: dateArray,
+                    labels: hourArray,
                     datasets: [{
                         label: 'sound',
                         borderColor: 'rgba(20, 20, 180, 0.9)',
@@ -61,17 +63,6 @@
             console.log(dateArray, points)
         })
         .catch(err => { throw err });
-        function getTime(){
-            for (let index = 0; index < array.length; index++) {
-                return array[index].date;
-            }
-        }
-
-        function getPoints(){
-            for (let index = 0; index < array.length; index++) {
-                return array[index].count;
-            }
-        }
 
         
         //     for (let index = 0; index <= x; index++) {
