@@ -34,10 +34,11 @@
     var minuteArray = [];
     var points = [];
     var hourArray = [];
+    var sValue = 60;
     let url = "/getData";
 value.addEventListener("mousemove", () => {
     document.getElementById("myRange").max = 60;
-    var sValue = document.getElementById("myRange").value
+    sValue = document.getElementById("myRange").value
     fetch(url)
         .then(res => res.json())
         .then((data) => {
