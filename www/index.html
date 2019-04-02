@@ -28,6 +28,7 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
+    
     var send, sendString;
     var minuteArray = [];
     var points = [];
@@ -51,7 +52,7 @@
             }).join('');
         })
         .then(() => {
-            var ctx = document.getElementById('myChart').getContext('2d');
+            var ctx = document.getElementById('myChart').getContext('3d');
             
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
@@ -68,47 +69,12 @@
                 },
                 // Configuration options go here
                 options: {
-                    // //Number - Amount of animation steps
-                    // animationSteps: 100,
-
-                    // //String - Animation easing effect
-                    // animationEasing: "easeOutBounce",
                 }
                 
             });
         })
         .catch(err => { throw err });
     });
-            // var value = document.getElementById("myRange");
-            // value.addEventListener("mousemove", () => {
-            //     document.getElementById("myRange").max = globalArray.length;
-            //     var sValue = document.getElementById("myRange").value
-                
-            // })
-            
-            
-        //     for (let index = 0; index <= x; index++) {
-        //     var y = document.querySelector(`.a${index}`);
-        //     y.addEventListener('click', () => {
-        //         send = array[index]._id;
-        //         sendString = JSON.stringify(send);
-        //         for (let index = 0; index < array.length; index++) {
-        //             document.querySelector(`.a${index}`).style.transitionDuration = "0.3s";
-        //             document.querySelector(`.a${index}`).style.backgroundColor = "transparent";
-        //         }
-        //         document.querySelector(`.a${index}`).style.backgroundColor = "blue";
-        //         });
-        //     }
-
-        
-        // function sendIt(){
-        //         var form = document.createElement('form');
-        //         document.body.appendChild(form);
-        //         form.method = 'post';
-        //         form.action = `/delQuotes/${sendString}`;
-        //         form.submit();
-        //         console.log(sendString);
-        // }
 </script>
 </html>
 
