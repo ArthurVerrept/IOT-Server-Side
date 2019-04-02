@@ -29,6 +29,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
     var send, sendString;
+    var quote = [];
     var minuteArray = [];
     var points = [];
     var hourArray = [];
@@ -40,7 +41,6 @@
                 hourArray.push(quote.hour);
                 minuteArray.push(quote.minute);
                 points.push(quote.count); 
-                
             }).join('');
         })
         .then(() => {
@@ -72,8 +72,10 @@
         .catch(err => { throw err });
             var value = document.getElementById("myRange");
             value.addEventListener("mousemove", () => {
-                document.getElementById("myRange").max = points.length;
-                console.log(document.getElementById("myRange").max)
+                document.getElementById("myRange").max = quote.length;
+                
+                
+                //console.log(document.getElementById("myRange").max)
             })
             
             
