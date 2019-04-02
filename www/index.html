@@ -36,7 +36,7 @@
     var hourArray = [];
     var sValue = 60;
     let url = "/getData";
-    document.getElementById("myRange").addEventListener("mousemove", () => {
+    document.getElementById("myRange").addEventListener("click", () => {
     document.getElementById("myRange").max = 60;
     sValue = document.getElementById("myRange").value
     fetch(url)
