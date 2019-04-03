@@ -46,7 +46,8 @@
             for (let i = 0; i < globalArray.length; i+30) {
                 var array = [];
                 for (let index = 0; index < 29; index++) {
-                    array.push(new Date(globalArray[i + index]))
+                    array.push(globalArray[i + index])
+                    console.log(globalArray[i + index]);
                 }
                 array30.push(array);
             }
