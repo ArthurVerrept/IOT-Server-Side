@@ -61,6 +61,7 @@
                     }
                     else{
                     tempCount.push(array60[index][i].count);
+                    minuteArray.push(array60[index][i].minute)
                     var date = new Date(array60[index][i].dateTime);
                     tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                     c++;
@@ -69,6 +70,7 @@
             }  
                fin.push({
                         label: `${tempTime[0]} -- ${tempTime[c]}`,
+                        labels: minuteArray,
                         borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
                         data: tempCount
