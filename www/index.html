@@ -27,6 +27,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
     var date = [];
+    var dispDate = [];
     let url = "/getData";
     var minuteArray = [];
     var points = [];
@@ -39,6 +40,7 @@
                 minuteArray.push(quote.minute);
                 points.push(quote.count); 
                 date.push(new Date(quote.dateTime))
+                dispDate.push(new Date(quote.dateTime.toLocaleTimeString()))
             }).join('');
             console.log(date);
         })
@@ -49,7 +51,7 @@
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: date,
+                    labels: dispDate,
                     datasets: [{
                         label: 'sound',
                         borderColor: 'rgba(20, 20, 180, 0.9)',
