@@ -66,9 +66,8 @@
                     tempCount.push(array60[index][i].count);
                     var date = new Date(array60[index][i].dateTime);
                     tempTime.push(date.toLocaleDateString() + date.toLocaleTimeString()); 
-                    console.log(tempCount, tempTime)
-                    }
                     c++;
+                    }
             }  
                fin.push({
                         label: tempTime[0] + "-" + tempTime[c],
