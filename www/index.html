@@ -28,7 +28,11 @@
 <script>
     var date = [];
     var dispDate = [];
-    var x= 0;
+    var dispTime = [];
+    var globalArray = [];
+    var array30 = [];
+    var x= -1;
+    var c = 0;
     let url = "/getData";
     var minuteArray = [];
     var points = [];
@@ -37,14 +41,18 @@
         .then(res => res.json())
         .then((data) => {
             data.map((quote) => {
-                hourArray.push(quote.hour);
-                minuteArray.push(quote.minute);
-                points.push(quote.count); 
-                date.push(new Date(quote.dateTime))
+               globalArray.push(quote);
             }).join('');
-            console.log(date);
+            for (let i = 0; i < globalArray.length; i+30) {
+                var array = [];
+                for (let index = 0; index < 29; index++) {
+                    array.push(new Date(globalArray[i + index]))
+                }
+                array30.push(array);
+            }
             for (let i = 0; i < date.length; i++) {
-                dispDate.push(date[i].toLocaleTimeString());
+                dispTime.push(date[i].toLocaleTimeString());
+                dispDate.push(date[i].toLocaleDateString());
                 x++;
             }
         })
@@ -55,9 +63,9 @@
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: dispDate,
+                    labels: dispTime,
                     datasets: [{
-                        label: dispDate[0] + "-" + dispDate[x-1],
+                        label: dispDate + "  " + dispTime[0] + "-" + dispTime[x],
                         borderColor: 'rgba(20, 20, 180, 0.9)',
                         fill: false,
                         data: points
