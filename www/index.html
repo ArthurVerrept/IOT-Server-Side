@@ -62,7 +62,7 @@
                     }
                     else{
                     tempCount.push(array60[index][i].count);
-                    minuteArray.push(array60[index][i].minute)
+                    minuteArray.push(new Date(array60[index][i].dateTime))
                     var date = new Date(array60[index][i].dateTime);
                     tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                     c++;
