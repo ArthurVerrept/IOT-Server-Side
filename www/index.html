@@ -40,8 +40,8 @@
     fetch(url)
         .then(res => res.json())
         .then((data) => {
-            data.map((quote) => {
-               globalArray.push(quote);
+            data.map((sound) => {
+               globalArray.push(sound);
                console.log("sucess");
             }).join('');
 
@@ -64,6 +64,7 @@
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
+            for (let index = 0; index < 2; index++) {
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -81,7 +82,9 @@
                 options: {
                 }
             });
+        }
         })
+
         .catch(err => { throw err });
 </script>
 </html>
