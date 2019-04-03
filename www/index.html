@@ -56,11 +56,6 @@
             }
             console.log(array30)
             
-            // for (let i = 0; i < date.length; i++) {
-            //     dispTime.push(date[i].toLocaleTimeString());
-            //     dispDate.push(date[i].toLocaleDateString());
-            //     x++;
-            // }
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -70,7 +65,8 @@
                 var tempTime = [];
                 for (let i = 0; i < 30; i++) {
                     tempCount.push(array30[index][i].count);
-                    tempTime.push(array30[index][i].minute);    
+                    tempTime.push(array30[index][i].minute); 
+                       console.log(tempCount, tempTime)
             }  
             var ret = {
                         labels: tempCount,
@@ -81,7 +77,7 @@
                         data: tempTime
                     }]
                 }
-                    return ret;
+                return ret;
         }
 
         var chart = new Chart(ctx, {
