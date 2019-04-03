@@ -48,17 +48,14 @@
                 for (let index = 0; index < 29; index++) {
                     array.push(globalArray[i + index])
                 }
-                i= index;
                 array30.push(array);
-                console.log(array30);
             }
-
-            console.log(array30);
-            for (let i = 0; i < date.length; i++) {
-                dispTime.push(date[i].toLocaleTimeString());
-                dispDate.push(date[i].toLocaleDateString());
-                x++;
-            }
+            console.log("success");
+            // for (let i = 0; i < date.length; i++) {
+            //     dispTime.push(date[i].toLocaleTimeString());
+            //     dispDate.push(date[i].toLocaleDateString());
+            //     x++;
+            // }
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
