@@ -60,7 +60,7 @@
                     if(array60[index][i] === undefined){
                         array60.slice(0,i);
                     }
-                    else if(array60[index][i].minute != 0 && tempCount.length > 1){
+                    else if(array60[index][i].minute == 0 && tempCount.length > 1){
                     tempCount.push(array60[index][i].count);
                     minuteArray.push(array60[index][i].minute)
                     var date = new Date(array60[index][i].dateTime);
