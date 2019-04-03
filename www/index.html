@@ -28,8 +28,6 @@
 <script>
     var fin = [];
     var globalArray = [];
-    var tempCount = [];
-    var tempTime = [];
     var array60 = [];
     var x= -1;
     var c = -1;
@@ -51,13 +49,14 @@
                     array.push(globalArray[i + index])
                 }
                 array60.push(array);
-                console.log(array60)
             }   
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
             function test(){}
             for (let index = 0; index < array60.length; index++) {
+                var tempCount = [];
+                var tempTime = [];
                 for (let i = 0; i < 60; i++) {
                     if(array60[index][i] === undefined){
                         array60.slice(0,i);
@@ -65,20 +64,21 @@
                     else{
                     tempCount.push(array60[index][i].count);
                     var date = new Date(array60[index][i].dateTime);
-                    tempTime.push(date.toLocaleDateString() + " " + date.toLocaleTimeString()); 
+                    tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                     c++;
                     }
             }  
                fin.push({
-                        label: tempTime[0] + " -- " + tempTime[c],
+                        label: `${tempTime[0]} -- ${tempTime[c]}`,
                         borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
                         data: tempCount
                  })
-                 function rgb(){
-                 return Math.floor(Math.random() * 255) + 1
-                 }  
         }
+
+        function rgb(){
+            return Math.floor(Math.random() * 255) + 1
+        }  
 
         var xAxis = [];
         for (let index = 1; index <= 60; index++) {
