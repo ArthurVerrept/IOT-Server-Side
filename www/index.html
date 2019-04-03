@@ -31,7 +31,6 @@
     var dispTime = [];
     var globalArray = [];
     var array20 = [];
-
     var x= -1;
     var c = 0;
     let url = "/getData";
@@ -43,36 +42,32 @@
         .then((data) => {
             data.map((sound) => {
                globalArray.push(sound);
+               tempCount.push(globalArray.count);
+               tempTime.push(globalArray.minute); 
                console.log("sucess");
             }).join('');    
-            for (let i = 0; i < 60; i+=20) {
-                var array = [];
-                for (let index = 0; index < 20; index++) {
-                    array.push(globalArray[i + index])
-                }
-                array20.push(array);
-            }
-            console.log(array20);
+            // for (let i = 0; i < 60; i+=20) {
+            //     var array = [];
+                // for (let index = 0; index < 20; index++) {
+            //         array.push(globalArray[i + index])
+            //     // }
+            //     array20.push(array);
+            // // }
+            // console.log(array20);
             
         })
         .then(() => {
-            var ctx = document.getElementById('myChart').getContext('2d');
-            function test(){}
-            for (let index = 0; index < array30.length; index++) {
-                var tempCount = [];
-                var tempTime = [];
-                for (let i = 0; i < 30; i++) {
-                    tempCount.push(array30[index][i].count);
-                    tempTime.push(array30[index][i].minute); 
-                    console.log(tempTime)
-            }  
-            var ret = {
-                        datasets: [{
-                        
-                    }]
-                }
-            return ret;
-        }
+        //     var ctx = document.getElementById('myChart').getContext('2d');
+        //     function test(){}
+        //     for (let index = 0; index < array30.length; index++) {
+        //         var tempCount = [];
+        //         var tempTime = [];
+        //         for (let i = 0; i < 30; i++) {
+        //             tempCount.push(array30[index][i].count);
+        //             tempTime.push(array30[index][i].minute); 
+        //             console.log(tempTime)
+        //     }  
+        // }
 
         var chart = new Chart(ctx, {
                 // The type of chart we want to create
@@ -80,12 +75,17 @@
                 // The data for our dataset  
                  data: {
                  labels: tempTime,
-                 datasets : {
+                 datasets : [{
                         label: "asdsa",
                         borderColor: 'rgba(20, 20, 180, 0.9)',
                         fill: false,
-                        data: tempCount,
-                    }
+                        data: tempCount.slice(0, 30),
+                 },{
+                        label: "asdsa",
+                        borderColor: 'rgba(20, 20, 180, 0.9)',
+                        fill: false,
+                        data: tempCount.slice(30, 60),
+                    }]
                  }
             });
         })
