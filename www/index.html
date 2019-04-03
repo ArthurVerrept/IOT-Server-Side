@@ -50,45 +50,31 @@
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
-            // for (let index = 0; index < array60.length; index++) {
+            function test(){}
+            for (let index = 0; index < array60.length; index++) {
                 var tempCount = [];
                 var tempTime = [];
-            //     minuteArray = [];
+                minuteArray = [];
                 var c = -1;
-            //     for (let i = 0; i < 59; i++) {
-            //         if(array60[index][i] === undefined){
-            //             array60.slice(0,i);
-            //         }
-            //         else{
-            //         tempCount.push(array60[index][i].count);
-            //         minuteArray.push(array60[index][i].minute)
-            //         var date = new Date(array60[index][i].dateTime);
-            //         tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
-            //         c++;
-            //         }
-            // }  
-            var count = 0;;
-                for (let index = 0; index < globalArray.length; index++) {
-                    if (globalArray[index].minute == 0 && count > 1) {
-                        fin.push({
-                            label: `${tempTime[0]} -- ${tempTime[c]}`,
-                            borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
-                            fill: false,
-                            data: tempCount
-                        })
+                for (let i = 0; i < 59; i++) {
+                    if(array60[index][i] === undefined){
+                        array60.slice(0,i);
                     }
                     else{
-                        tempCount.push(globalArray[index].count);
-                        minuteArray.push(globalArray[index].minute)
-                        var date = new Date(globalArray[index].dateTime);
-                        tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
-                        c++;
+                    tempCount.push(array60[index][i].count);
+                    minuteArray.push(array60[index][i].minute)
+                    var date = new Date(array60[index][i].dateTime);
+                    tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
+                    c++;
                     }
-                }
-                count = 0;
-
-               
-        //}
+            }  
+               fin.push({
+                        label: `${tempTime[0]} -- ${tempTime[c]}`,
+                        borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
+                        fill: false,
+                        data: tempCount
+                 })
+        }
 
         function rgb(){
             return Math.floor(Math.random() * 255) + 1
