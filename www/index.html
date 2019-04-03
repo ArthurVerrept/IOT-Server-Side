@@ -64,7 +64,8 @@
                     }
                     else{
                     tempCount.push(array60[index][i].count);
-                    tempTime.push(new Date(array60[index][i].dateTime)); 
+                    var date = new Date(array60[index][i].dateTime);
+                    tempTime.push(date.toLocaleDateString() + date.toLocaleTimeString()); 
                     }
                     c++;
             }  
