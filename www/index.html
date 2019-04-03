@@ -44,10 +44,13 @@
         .then((data) => {
             data.map((sound) => {
                globalArray.push(sound);
-               tempCount.push(globalArray.count);
+               
+            }).join('');   
+            for (let index = 0; index < globalArray.length; index++) {
+                tempCount.push(globalArray.count);
                tempTime.push(globalArray.minute); 
                console.log(tempCount);
-            }).join('');    
+            } 
             // for (let i = 0; i < 60; i+=20) {
             //     var array = [];
                 // for (let index = 0; index < 20; index++) {
