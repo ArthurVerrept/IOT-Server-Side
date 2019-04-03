@@ -57,15 +57,6 @@
                 minuteArray = [];
                 var c = -1;
                 for (let i = 0; i < 59; i++) {
-                    if (array60[index][i].minute == 0 && tempCount.length > 1) {
-                        fin.push({
-                            label: `${tempTime[0]} -- ${tempTime[c]}`,
-                            borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
-                            fill: false,
-                            data: tempCount
-                        })
-                    }
-                    else{
                     if(array60[index][i] === undefined){
                         array60.slice(0,i);
                     }
@@ -76,10 +67,9 @@
                     tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                     c++;
                     }
-                }
-                    
             }  
                fin.push({
+                        labels: minuteArray,
                         label: `${tempTime[0]} -- ${tempTime[c]}`,
                         borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
@@ -100,7 +90,6 @@
                 type: 'line',
                 // The data for our dataset  
                  data: {
-                 labels: minuteArray,
                  datasets : fin
                  }
             });
