@@ -64,24 +64,29 @@
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
             for (let index = 0; index < array30.length; index++) {
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line',
-                // The data for our dataset
-                data: {
-                    labels: array30[index].points,
-                    datasets: [{
-                        label: "asdsa",
-                        borderColor: 'rgba(20, 20, 180, 0.9)',
-                        fill: false,
-                        data: array30[index].dateTime
-                    }]
-                },
-                // Configuration options go here
-                options: {
+                for (let index = 0; index < 30; index++) {
+                    dispTime.push(array30[index].dateTime.toLocaleTimeString());
+                    dispDate.push(array30[index].dateTime.toLocaleDateString());
+                    console.log(dispTime, dispDate)
                 }
-            });
-        }
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+                    // The data for our dataset
+                    data: {
+                        labels: ,
+                        datasets: [{
+                            label: "asdsa",
+                            borderColor: 'rgba(20, 20, 180, 0.9)',
+                            fill: false,
+                            data: 
+                        }]
+                    },
+                    // Configuration options go here
+                    options: {
+                    }
+                });
+            }
         })
 
         .catch(err => { throw err });
