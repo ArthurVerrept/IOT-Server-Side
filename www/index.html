@@ -31,7 +31,7 @@
     var dispTime = [];
     var globalArray = [];
     var array30 = [];
-    var temp30 = [];
+
     var x= -1;
     var c = 0;
     let url = "/getData";
@@ -65,28 +65,30 @@
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
             for (let index = 0; index < array30.length; index++) {
+                var tempCount = [];
+                var tempTime = [];
                 for (let i = 0; i < 30; i++) {
-                    temp30.push(array30[index][i]);
+                    tempCount.push(array30[index][i].count);
+                    tempTime.push(array30[index][i].minute);
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+                        // The data for our dataset
+                        data: {
+                            labels: temoCount,
+                            datasets: [{
+                                label: "asdsa",
+                                borderColor: 'rgba(20, 20, 180, 0.9)',
+                                fill: false,
+                                data: tempTime
+                            }]
+                        },
+                        // Configuration options go here
+                        options: {
+                        }
+                    });
                 }
-                    console.log(temp30);
-            }
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line',
-                // The data for our dataset
-                data: {
-                    labels: index,
-                    datasets: [{
-                        label: "asdsa",
-                        borderColor: 'rgba(20, 20, 180, 0.9)',
-                        fill: false,
-                        data: index
-                    }]
-                },
-                // Configuration options go here
-                options: {
-                }
-            });
+            }  
         })
 
         .catch(err => { throw err });
