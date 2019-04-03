@@ -45,9 +45,9 @@
             for (let i = 0; i < date.length; i++) {
                 dispDate.push(date[i].toLocaleTimeString());
             }
-            var l = dispDate.length
         })
         .then(() => {
+            var l = dispDate.length
             var ctx = document.getElementById('myChart').getContext('2d');
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
