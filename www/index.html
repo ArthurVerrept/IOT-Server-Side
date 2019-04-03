@@ -31,6 +31,7 @@
     var dispTime = [];
     var globalArray = [];
     var array30 = [];
+    var temp30 = [];
     var x= -1;
     var c = 0;
     let url = "/getData";
@@ -64,29 +65,26 @@
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
             for (let index = 0; index < array30.length; index++) {
-                for (let index = 0; index < 30; index++) {
-                    dispTime.push(array30[index].dateTime.toLocaleTimeString());
-                    dispDate.push(array30[index].dateTime.toLocaleDateString());
-                    console.log(dispTime, dispDate)
-                }
-                var chart = new Chart(ctx, {
-                    // The type of chart we want to create
-                    type: 'line',
-                    // The data for our dataset
-                    data: {
-                        labels: index,
-                        datasets: [{
-                            label: "asdsa",
-                            borderColor: 'rgba(20, 20, 180, 0.9)',
-                            fill: false,
-                            data: index
-                        }]
-                    },
-                    // Configuration options go here
-                    options: {
-                    }
-                });
+                    temp30.push(array30[index]);
+                    console.log(temp30)
             }
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+                // The data for our dataset
+                data: {
+                    labels: index,
+                    datasets: [{
+                        label: "asdsa",
+                        borderColor: 'rgba(20, 20, 180, 0.9)',
+                        fill: false,
+                        data: index
+                    }]
+                },
+                // Configuration options go here
+                options: {
+                }
+            });
         })
 
         .catch(err => { throw err });
