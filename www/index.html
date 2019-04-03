@@ -62,8 +62,11 @@
                     if(typeof array60[index][i].count !== 'undefined'){
                         tempCount.push(array60[index][i].count);
                         tempTime.push(array60[index][i].date);
-                        console.log(array60[index][i].count)
                     }   
+                    else{
+                        tempCount.push(0);
+                        tempTime.push(0);
+                    }
             }  
                fin.push({
                         label: tempTime[0] + "-" + tempTime[i],
