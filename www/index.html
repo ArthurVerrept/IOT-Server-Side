@@ -70,7 +70,6 @@
             }  
                fin.push({
                         label: `${tempTime[0]} -- ${tempTime[c]}`,
-                        labels: minuteArray,
                         borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
                         data: tempCount
@@ -90,7 +89,7 @@
                 type: 'line',
                 // The data for our dataset  
                  data: {
-                 labels: xAxis,
+                 labels: minuteArray,
                  datasets : fin
                  }
             });
