@@ -71,10 +71,13 @@
             }  
                fin.push({
                         label: tempTime[0] + " -- " + tempTime[c],
-                        borderColor: 'rgba(20, 20, 180, 0.9)',
+                        borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
                         data: tempCount
                  })
+                 function rgb(){
+                 return Math.floor(Math.random() * 255) + 1
+                 }  
         }
 
         var xAxis = [];
