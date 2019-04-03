@@ -58,9 +58,15 @@
             function test(){}
             for (let index = 0; index < array60.length; index++) {
                 for (let i = 0; i < 60; i++) {
-                    tempCount.push(array60[index][i].count);
-                    tempTime.push(array60[index][i].date);
-                    console.log(array60[index][i].count)
+                    if(array60[index][i].count != null){
+                        tempCount.push(array60[index][i].count);
+                        tempTime.push(array60[index][i].date);
+                        console.log(array60[index][i].count)
+                    }
+                    else{
+                        return;
+                    }
+                    
             }  
                fin.push({
                         label: tempTime[0] + "-" + tempTime[i],
