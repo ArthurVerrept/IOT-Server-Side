@@ -69,7 +69,6 @@
                     }
             }  
                fin.push({
-                        labels: minuteArray,
                         label: `${tempTime[0]} -- ${tempTime[c]}`,
                         borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
@@ -90,8 +89,20 @@
                 type: 'line',
                 // The data for our dataset  
                  data: {
+                 labels: minuteArray,
                  datasets : fin
-                 }
+                 },
+                 options: {
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                Min: 0,
+                                Max: 60,
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
             });
         })
         .catch(err => { throw err });
