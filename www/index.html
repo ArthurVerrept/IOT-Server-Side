@@ -42,8 +42,10 @@
         .then((data) => {
             data.map((quote) => {
                globalArray.push(quote);
+               console.log("sucess");
             }).join('');
-            console.log("sucess");
+
+            
             for (let i = 0; i < globalArray.length; i+=30) {
                 console.log(i, globalArray.length);
                 var array = [];
