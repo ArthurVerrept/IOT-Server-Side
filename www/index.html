@@ -54,7 +54,7 @@
                 }
                 array30.push(array);
             }
-
+            console.log(array30)
             
             // for (let i = 0; i < date.length; i++) {
             //     dispTime.push(date[i].toLocaleTimeString());
@@ -65,8 +65,10 @@
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
             for (let index = 0; index < array30.length; index++) {
-                    temp30.push(array30[index]);
-                    console.log(temp30)
+                for (let i = 0; i < 30; i++) {
+                    temp30.push(array30[index][i]);
+                }
+                    console.log(temp30);
             }
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
