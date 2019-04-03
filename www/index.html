@@ -64,33 +64,44 @@
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
+            function test(){}
             for (let index = 0; index < array30.length; index++) {
                 var tempCount = [];
                 var tempTime = [];
                 for (let i = 0; i < 30; i++) {
                     tempCount.push(array30[index][i].count);
                     tempTime.push(array30[index][i].minute);
-                    var chart = new Chart(ctx, {
-                        // The type of chart we want to create
-                        type: 'line',
-                        // The data for our dataset
-                        data: {
-                            labels: tempCount,
-                            datasets: [{
-                                label: "asdsa",
-                                borderColor: 'rgba(20, 20, 180, 0.9)',
-                                fill: false,
-                                data: tempTime
-                            }]
-                        },
-                        // Configuration options go here
-                        options: {
-                        }
-                    });
+                    return {
+                        labels: tempCount,
+                        datasets: [{
+                        label: "asdsa",
+                        borderColor: 'rgba(20, 20, 180, 0.9)',
+                        fill: false,
+                        data: tempTime
+                    }]
                 }
             }  
-        })
+        }
 
+        var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+                // The data for our dataset  
+                 data: test(),
+                //  {
+                //     labels: tempCount,
+                //     datasets: [{
+                //         label: "asdsa",
+                //         borderColor: 'rgba(20, 20, 180, 0.9)',
+                //         fill: false,
+                //         data: tempTime
+                //     }]
+                // },
+                // Configuration options go here
+                options: {
+                }
+            });
+        })
         .catch(err => { throw err });
 </script>
 </html>
