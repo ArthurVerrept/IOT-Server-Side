@@ -43,11 +43,12 @@
             data.map((quote) => {
                globalArray.push(quote);
             }).join('');
-            for (let i = 0; i < globalArray.length; i+30) {
+            for (let i = 0; i < globalArray.length; i++) {
                 var array = [];
                 for (let index = 0; index < 29; index++) {
                     array.push(globalArray[i + index])
                 }
+                i= index;
                 array30.push(array);
                 console.log(array30);
             }
