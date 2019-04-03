@@ -66,6 +66,7 @@
                 for (let i = 0; i < 30; i++) {
                     tempCount.push(array30[index][i].count);
                     tempTime.push(array30[index][i].minute); 
+                    console.log(tempTime)
             }  
             var ret = {
                         datasets: [{
@@ -83,18 +84,8 @@
                 type: 'line',
                 // The data for our dataset  
                  data: {
-                 labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+                 labels: [],
                  datasets : test(),
-                //  {
-                //     labels: tempCount,
-                //     datasets: [{
-                //         label: "asdsa",
-                //         borderColor: 'rgba(20, 20, 180, 0.9)',
-                //         fill: false,
-                //         data: tempTime
-                //     }]
-                // },
-                // Configuration options go here
                  }
             });
         })
