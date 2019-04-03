@@ -65,12 +65,12 @@
                     else{
                     tempCount.push(array60[index][i].count);
                     var date = new Date(array60[index][i].dateTime);
-                    tempTime.push(date.toLocaleDateString() + date.toLocaleTimeString()); 
+                    tempTime.push(date.toLocaleDateString() + " " + date.toLocaleTimeString()); 
                     c++;
                     }
             }  
                fin.push({
-                        label: tempTime[0] + "-" + tempTime[c],
+                        label: tempTime[0] + " -- " + tempTime[c],
                         borderColor: 'rgba(20, 20, 180, 0.9)',
                         fill: false,
                         data: tempCount
