@@ -13,20 +13,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-3">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown button
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item">1</a>
-                            <a class="dropdown-item disabled">2</a>
-                            <a class="dropdown-item">3</a>
-                            <a class="dropdown-item">4</a>
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="container">
@@ -39,33 +26,24 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
-
-
-    var slider = document.getElementById("myRange");
-    var curValue = document.getElementById("myCaption");
+    var date = [];
     let url = "/getData";
-    slider.max = 60;
-    slider.value = 60;
-    // slider.addEventListener("click", () => {
-    // slider.addEventListener("mousemover", () => {
-    //     curValue.innerHTML = "currentVal " + curValue.value;
-    // });
     var minuteArray = [];
     var points = [];
     var hourArray = [];
-    sValue = document.getElementById("myRange").value
     fetch(url)
         .then(res => res.json())
         .then((data) => {
-            data.slice(0,sValue).map((quote) => {
+            data.map((quote) => {
                 hourArray.push(quote.hour);
                 minuteArray.push(quote.minute);
                 points.push(quote.count); 
+                date.push(new Date(quote.dateTime))
             }).join('');
+            console.log(date);
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
-            
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -85,7 +63,6 @@
             });
         })
         .catch(err => { throw err });
-    // });
 </script>
 </html>
 
