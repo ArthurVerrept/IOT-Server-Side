@@ -28,6 +28,7 @@
 <script>
     var date = [];
     var dispDate = [];
+    var x= 0;
     let url = "/getData";
     var minuteArray = [];
     var points = [];
@@ -44,10 +45,10 @@
             console.log(date);
             for (let i = 0; i < date.length; i++) {
                 dispDate.push(date[i].toLocaleTimeString());
+                x++;
             }
         })
         .then(() => {
-            var l = dispDate.length
             var ctx = document.getElementById('myChart').getContext('2d');
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
@@ -56,7 +57,7 @@
                 data: {
                     labels: dispDate,
                     datasets: [{
-                        label: dispDate[0] + "-" + dispDate[l],
+                        label: dispDate[0] + "-" + dispDate[x],
                         borderColor: 'rgba(20, 20, 180, 0.9)',
                         fill: false,
                         data: points
