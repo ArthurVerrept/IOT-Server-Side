@@ -51,6 +51,7 @@
                     array.push(globalArray[i + index])
                 }
                 array60.push(array);
+                console.log(array60)
             }   
         })
         .then(() => {
@@ -62,11 +63,7 @@
                         tempCount.push(array60[index][i].count);
                         tempTime.push(array60[index][i].date);
                         console.log(array60[index][i].count)
-                    }
-                    else{
-                        return;
-                    }
-                    
+                    }   
             }  
                fin.push({
                         label: tempTime[0] + "-" + tempTime[i],
