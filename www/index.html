@@ -60,14 +60,17 @@
                     if(array60[index][i] === undefined){
                         array60.slice(0,i);
                     }
-                    else{
+                    else if(array60[index][i].minute != 0 && tempCount.length > 1){
                     tempCount.push(array60[index][i].count);
                     minuteArray.push(array60[index][i].minute)
                     var date = new Date(array60[index][i].dateTime);
                     tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                     c++;
                     }
-                console.log(tempCount, tempTime, c)
+                    else{
+                        console.log("minute is 0 and count array length > 1");
+                        return;
+                    }
             }  
                fin.push({
                         label: `${tempTime[0]} -- ${tempTime[c]}`,
