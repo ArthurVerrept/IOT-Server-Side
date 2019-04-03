@@ -57,25 +57,27 @@
                 minuteArray = [];
                 var c = -1;
                 for (let i = 0; i < 59; i++) {
+                    if (array60[index][i].minute == 0 && tempCount.length > 1) {
+                        fin.push({
+                            label: `${tempTime[0]} -- ${tempTime[c]}`,
+                            borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
+                            fill: false,
+                            data: tempCount
+                        })
+                    }
+                    else{
                     if(array60[index][i] === undefined){
                         array60.slice(0,i);
                     }
-                    else if(array60[index][i].minute != 0 && tempCount.length > 1){
+                    else{
                     tempCount.push(array60[index][i].count);
                     minuteArray.push(array60[index][i].minute)
                     var date = new Date(array60[index][i].dateTime);
                     tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                     c++;
                     }
-                    else{
-                        console.log("minute is 0 and count array length > 1");
-                        fin.push({
-                                label: `${tempTime[0]} -- ${tempTime[c]}`,
-                                borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
-                                fill: false,
-                                data: tempCount
-                        })
-                    }
+                }
+                    
             }  
                fin.push({
                         label: `${tempTime[0]} -- ${tempTime[c]}`,
