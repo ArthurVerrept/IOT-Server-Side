@@ -40,9 +40,11 @@
                 minuteArray.push(quote.minute);
                 points.push(quote.count); 
                 date.push(new Date(quote.dateTime))
-                dispDate.push(new Date(quote.dateTime.toLocaleTimeString()))
             }).join('');
             console.log(date);
+            for (let i = 0; i < date.length; i++) {
+                dispDate.push(date[i].toLocaleTimeString());
+            }
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
