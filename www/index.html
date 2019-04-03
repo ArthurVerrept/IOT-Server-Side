@@ -78,9 +78,9 @@
                         })
                     }
                     else{
-                        tempCount.push(globalArray[index][i].count);
-                        minuteArray.push(globalArray[index][i].minute)
-                        var date = new Date(globalArray[index][i].dateTime);
+                        tempCount.push(globalArray[index].count);
+                        minuteArray.push(globalArray[index].minute)
+                        var date = new Date(globalArray[index].dateTime);
                         tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                         c++;
                     }
