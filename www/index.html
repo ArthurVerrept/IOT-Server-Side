@@ -54,7 +54,6 @@
                 array30.push(array);
             }
 
-            console.log(array30)
             
             // for (let i = 0; i < date.length; i++) {
             //     dispTime.push(date[i].toLocaleTimeString());
@@ -64,18 +63,18 @@
         })
         .then(() => {
             var ctx = document.getElementById('myChart').getContext('2d');
-            for (let index = 0; index < 2; index++) {
+            for (let index = 0; index < array30.length; index++) {
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: index,
+                    labels: array30[index].points,
                     datasets: [{
                         label: "asdsa",
                         borderColor: 'rgba(20, 20, 180, 0.9)',
                         fill: false,
-                        data: index
+                        data: array30[index].dateTime
                     }]
                 },
                 // Configuration options go here
