@@ -1,15 +1,19 @@
+//requiring necessary packages
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
 const mongo = require('mongodb');
-const password = "admin";
+
+//setting the database connection to varible url
 const url = `mongodb+srv://admin:admin@moviequote-kwsqp.mongodb.net/test?retryWrites=true`; //connection string to cloud database 
 
+//setting app to express to be able to use all features
 const app =  express();
+
+//set port to applications chosen port
 var port = process.env.PORT || 3000;
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json()); 
+
 
 app.listen(port, function(){
     console.log(`app is listening on port ${port}`);
@@ -38,16 +42,3 @@ app.get("/getData", (req, res) => {
         res.send(result);
     })
 });
-
-// app.post("/delQuotes/:id", (req, res) => {
-//     console.log(req.params.id);
-//     var id = req.params.id;
-//     db.collection("quotes").find().toArray((err, result) => {
-//         if (err) throw err;
-//         db.collection("quotes").deleteOne({ _id: new mongo.ObjectId(id) }, (err, result) => {
-//             if (err) throw err;
-//             console.log("Deleted record");
-//             res.redirect("/")
-//         })
-//     })
-// });
