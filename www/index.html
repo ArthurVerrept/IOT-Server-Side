@@ -59,60 +59,65 @@
         .then(() => {
             //select the my chart by ID
             var ctx = document.getElementById('myChart').getContext('2d');
-            //for loop to go through the arrays of 60 one by one
+            //for loop to go through the values of the inside arrays one by one
             for (let index = 0; index < array60.length; index++) {
                 //setting up all arrays to be used, also resets them on loop
                 var tempCount = [];
                 var tempTime = [];
                 var minuteArray = [];
-                //c is used to get the array length in next 
-                var c = -1;
+                //this for loop goes through the inside arrays of 60 one at a time
                 for (let i = 0; i < 60; i++) {
+                    //if statement to check whether array is undefined since they always
+                    //have to be 60 long
                     if(array60[index][i] === undefined){
+                        //slice array from start to undefined element only keeping the data needed
+                        //this means of only 20 mins is collected it will show only 20 mins
                         array60.slice(0,i);
                     }
                     else{
-                    tempCount.push(array60[index][i].count);
-                    minuteArray.push(array60[index][i].minute)
-                    var date = new Date(array60[index][i].dateTime);
-                    tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
-                    c++;
+                        //if the array is not undefined
+                        //the 3 temp arrays the data needed to display how needed
+                        //tempCount is used to show loudness on y axis of graph
+                        tempCount.push(array60[index][i].count);
+                        //this sets a date variable to be an actual date opbject
+                        var date = new Date(array60[index][i].dateTime);
+                        //tempTime is that date just created as easily readable strings to display as indicators
+                        tempTime.push(`${date.toLocaleDateString()}  ${date.toLocaleTimeString()}`); 
                     }
             }  
+               //once we have looped through all the 60 values of the inside array and pushed those 60 to arrays
                fin.push({
+                        //push the tempCount array as a data set and use tempTime for label above chart
                         label: `${tempTime[0]} -- ${tempTime[tempTime.length -1]}`,
+                        //sets colour to call three random rgb values between 1-255
                         borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
                         data: tempCount
                  })
         }
-        //comment
+        
         function rgb(){
+            //this returns a random value between 1-255
             return Math.floor(Math.random() * 255) + 1
         }  
 
+        //creating xAxis array
         var xAxis = [];
+        //populating xAxis array with the numbers 1-60
         for (let index = 1; index <= 60; index++) {
             xAxis.push(index)
         }
-        var chart = new Chart(ctx, {
+        //creating the chart
+        new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
-                // The data for our dataset  
+                // The data for our dataset xAxis on the x axis 
+                //and the fin array full of objects containing arrays of 60 points
                  data: {
                  labels: xAxis,
                  datasets : fin
                  },
                  options: {
-                    scales: {
-                        xAxes: [{
-                            ticks: {
-                                Min: 0,
-                                Max: 60,
-                                beginAtZero: true
-                            }
-                        }]
-                    }
                 }
             });
         })
