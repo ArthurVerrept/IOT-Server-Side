@@ -41,22 +41,31 @@
                //global array now contains the whole database
                globalArray.push(sound);
             });
-            //for 
+            //this for loop goes through globalArray every 60 places
             for (let i = 0; i < globalArray.length; i+=60) {
+                //resetting array to hpold 60 items temporarily until added to array60
                 var array = [];
+                //this loops through the 60 folloing points from the position of the outer loop
                 for (let index = 0; index < 60; index++) {
+                    //pushing the value at the current point in outer array which is i + index 
+                    // (if not i + index we would always get the same first 60)
                     array.push(globalArray[i + index])
                 }
+                //Once that 60 is done, push that array into array60 and start again
+                //array60 is now an array full of arrays of length 60 (0-59)
                 array60.push(array);
             }   
         })
         .then(() => {
+            //select the my chart by ID
             var ctx = document.getElementById('myChart').getContext('2d');
-            function test(){}
+            //for loop to go through the arrays of 60 one by one
             for (let index = 0; index < array60.length; index++) {
+                //setting up all arrays to be used, also resets them on loop
                 var tempCount = [];
                 var tempTime = [];
                 var minuteArray = [];
+                //c is used to get the array length in next 
                 var c = -1;
                 for (let i = 0; i < 60; i++) {
                     if(array60[index][i] === undefined){
@@ -71,7 +80,7 @@
                     }
             }  
                fin.push({
-                        label: `${tempTime[0]} -- ${tempTime[c]}`,
+                        label: `${tempTime[0]} -- ${tempTime[tempTime.length -1]}`,
                         borderColor: `rgba(${rgb()}, ${rgb()}, ${rgb()}, 0.9)`,
                         fill: false,
                         data: tempCount
