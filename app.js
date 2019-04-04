@@ -32,7 +32,7 @@ MongoClient.connect(url, (err, client) => {
     db = client.db("soundData");
 });
 
-//if the url addData is posted too
+//if the url addData is posted to
 app.post("/addData", (req, res) => {
     //take the posted data and insert into collection 'sound'
     db.collection("sound").insertOne(req.body, (err, result) => {
