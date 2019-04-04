@@ -11,35 +11,37 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-
-        </div>
-    </div>
+    <!-- this container holds the chart -->
     <div class="container">
         <div class="row mt-5">
             <div class="col-12">
+                <!-- this canvas is called by id myChart in the script -->
                 <canvas id="myChart"></canvas>
             </div>
         </div>
     </div>
 </body>
+<!-- Connecting to the chart.js cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
+    //declaring all arrays that need used in more than one place
     var fin = [];
     var globalArray = [];
     var array60 = [];
-    var x= -1;
+    //when chart calls this script to populate it, it goes to this url to get the database data
     let url = "/getData";
-    var minuteArray = [];
-    var points = [];
-    var hourArray = [];
+    //fetch data at that url
     fetch(url)
+        //then take that respose and convert to json
         .then(res => res.json())
+        //then take that and map it to sound
         .then((data) => {
             data.map((sound) => {
+               //push each sound object in into global array
+               //global array now contains the whole database
                globalArray.push(sound);
-            }).join('');   
+            });
+            //for 
             for (let i = 0; i < globalArray.length; i+=60) {
                 var array = [];
                 for (let index = 0; index < 60; index++) {
@@ -54,7 +56,7 @@
             for (let index = 0; index < array60.length; index++) {
                 var tempCount = [];
                 var tempTime = [];
-                minuteArray = [];
+                var minuteArray = [];
                 var c = -1;
                 for (let i = 0; i < 60; i++) {
                     if(array60[index][i] === undefined){
