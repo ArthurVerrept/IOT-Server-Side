@@ -13,13 +13,10 @@ const app =  express();
 //set port to applications chosen port
 var port = process.env.PORT || 3000;
 
-
+//this enables bodyParser which is used to pass the request in the correct formats
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json()); 
 
-app.listen(port, function(){
-    console.log(`app is listening on port ${port}`);
-});
 
 app.get("/", (req, res) => res.sendFile(__dirname + "/www/"));
 
